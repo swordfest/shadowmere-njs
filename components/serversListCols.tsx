@@ -19,6 +19,7 @@ import {
 } from "../libs/store";
 import ServerSkeleton from "./serverSkeleton";
 import ServerCol from "./serverCol";
+import { apiBaseUrl } from "../vars/variables";
 
 export default function ServersListCols(props: any) {
   const [pageCounter, setPageCounter] = useRecoilState(pageCounterState);
@@ -34,7 +35,7 @@ export default function ServersListCols(props: any) {
   const fetcher = (...args: [any, any]) =>
     fetch(...args).then((res) => res.json());
   const { data, error, mutate } = useSWR(
-    "https://shadowmere.akiel.dev/api/proxies/?format=json&is_active=true&location_country_code=" +
+    `${apiBaseUrl}/proxies/?format=json&is_active=true&location_country_code=` +
       countryFilter +
       "&port=" +
       portFilter +

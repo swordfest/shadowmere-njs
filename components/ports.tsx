@@ -2,16 +2,18 @@ import useSWR from "swr";
 import React, { useEffect } from "react";
 import { portFilterState, pageCounterState } from "../libs/store";
 import { useRecoilState } from "recoil";
+import { apiBaseUrl } from "../vars/variables";
 
 export default function Ports(props: any) {
 	const [portFilter, setPortFilter] = useRecoilState(portFilterState);
 	const [pageFilter, setPageFilter] = useRecoilState(pageCounterState);
 
+
 	const fetcher = (...args: [any, any]) =>
 		fetch(...args).then((res) => res.json());
 
 	const { data: ports, error } = useSWR(
-		"https://shadowmere.akiel.dev/api/ports/",
+		`${apiBaseUrl}/ports/`,
 		fetcher
 	);
 

@@ -33,17 +33,6 @@ export const qrScreen = atom({
     default: false,
 })
 
-// export const proxiesObj = selector({
-//     key: 'proxiesObj',
-//     get: async ({ get }: any) => {
-//         const response: Proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&is_active=true')).json()
-//         if (!response) {
-//             return console.error();
-//         }
-//         return response
-//     },
-// })
-
 export const proxyId = atom({
     key: 'proxyId',
     default: null,
